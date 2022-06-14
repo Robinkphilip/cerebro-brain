@@ -4,3 +4,6 @@ body {
   font-family: sans-serif;
   background: linear-gradient(89deg, rgb(228, 179, 81) 0%, #0691ad 100%);
 }
+button {
+  cursor: pointer;
+}
