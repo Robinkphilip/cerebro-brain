@@ -2,7 +2,7 @@ import React from "react";
 import Clarifai from "clarifai";
 
 import "./App.css";
-import ParticleBackground from "./components/config/ParticleBackground";
+
 import Navigation from "./components/Navigation /Navigation";
 import Signin from "./components/Signin/Signin";
 import Logo from "./components/Logo/Logo";
@@ -58,7 +58,6 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <ParticleBackground />
         <Navigation />
         <Signin />
         <Logo />
