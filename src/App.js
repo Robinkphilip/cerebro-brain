@@ -9,6 +9,7 @@ import Logo from "./components/Logo/Logo";
 import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm";
 import Rank from "./components/Rank/Rank";
 import FaceRecogintion from "./components/FaceRecogintion/FaceRecogintion";
+import Register from "./components/Register/Register";
 
 const app = new Clarifai.App({
   apiKey: "9985cc1ce04d4266a60cc94602a6920e",
@@ -21,7 +22,8 @@ class App extends React.Component {
       input: "",
       imgUrl: "",
       box: {},
-      route: "",
+      route: "signin",
+      isSignedIn: false,
     };
   }
   onInputChange = (event) => {
@@ -43,7 +45,6 @@ class App extends React.Component {
     };
   };
   displayFaceLoction = (box) => {
-    console.log(box);
     this.setState({ box: box });
   };
   onButtonSubmit = () => {
@@ -57,25 +58,36 @@ class App extends React.Component {
       );
   };
   onRouteChange = (route) => {
+    if (route === "signout") {
+      this.setState({ isSignedIn: "false" });
+    } else if (route === "home") {
+      this.setState({ isSignedIn: "true" });
+    }
     this.setState({ route: route });
   };
 
   render() {
+    const { isSignedIn, imgUrl, route, box } = this.state;
     return (
       <div className="App">
-        {this.state.route === "signin" ? (
-          <Signin onRouteChange={this.onRouteChange} />
-        ) : (
+        <Navigation
+          isSignedIn={isSignedIn}
+          onRouteChange={this.onRouteChange}
+        />
+        {route === "home" ? (
           <div>
-            <Navigation onRouteChange={this.onRouteChange} />
             <Logo />
             <Rank />
             <ImageLinkForm
               onInputChange={this.onInputChange}
               onButtonSubmit={this.onButtonSubmit}
             />
-            <FaceRecogintion imgUrl={this.state.imgUrl} box={this.state.box} />
+            <FaceRecogintion imgUrl={imgUrl} box={box} />
           </div>
+        ) : route === "signin" ? (
+          <Signin onRouteChange={this.onRouteChange} />
+        ) : (
+          <Register onRouteChange={this.onRouteChange} />
         )}
       </div>
     );
