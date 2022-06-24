@@ -21,6 +21,7 @@ class App extends React.Component {
       input: "",
       imgUrl: "",
       box: {},
+      route: "",
     };
   }
   onInputChange = (event) => {
@@ -55,18 +56,27 @@ class App extends React.Component {
         )
       );
   };
+  onRouteChange = (route) => {
+    this.setState({ route: route });
+  };
+
   render() {
     return (
       <div className="App">
-        <Navigation />
-        <Signin />
-        <Logo />
-        <Rank />
-        <ImageLinkForm
-          onInputChange={this.onInputChange}
-          onButtonSubmit={this.onButtonSubmit}
-        />
-        <FaceRecogintion imgUrl={this.state.imgUrl} box={this.state.box} />
+        {this.state.route === "signin" ? (
+          <Signin onRouteChange={this.onRouteChange} />
+        ) : (
+          <div>
+            <Navigation onRouteChange={this.onRouteChange} />
+            <Logo />
+            <Rank />
+            <ImageLinkForm
+              onInputChange={this.onInputChange}
+              onButtonSubmit={this.onButtonSubmit}
+            />
+            <FaceRecogintion imgUrl={this.state.imgUrl} box={this.state.box} />
+          </div>
+        )}
       </div>
     );
   }
