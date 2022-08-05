@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Clarifai from "clarifai";
 
-import Particles from "react-tsparticles";
 import FaceRecognition from "./components/FaceRecogintion/FaceRecogintion";
 import Navigation from "./components/Navigation/Navigation.js";
 import Signin from "./components/Signin/Signin";
@@ -9,23 +8,12 @@ import Register from "./components/Register/Register";
 import Logo from "./components/Logo/Logo";
 import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm";
 import Rank from "./components/Rank/Rank";
+
 import "./App.css";
 
-//You must add your own API key here from Clarifai.
 const app = new Clarifai.App({
   apiKey: "9985cc1ce04d4266a60cc94602a6920e",
 });
-const particlesOptions = {
-  particles: {
-    number: {
-      value: 30,
-      density: {
-        enable: true,
-        value_area: 800,
-      },
-    },
-  },
-};
 
 class App extends Component {
   constructor() {
@@ -116,7 +104,6 @@ class App extends Component {
     const { isSignedIn, imgUrl, route, box } = this.state;
     return (
       <div className="App">
-        <Particles className="particles" params={particlesOptions} />
         <Navigation
           isSignedIn={isSignedIn}
           onRouteChange={this.onRouteChange}
