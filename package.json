@@ -44,6 +44,7 @@
   "devDependencies": {
     "@testing-library/dom": "^8.17.1",
     "@testing-library/user-event": "^14.4.3",
-    "react-error-overlay": "^6.0.9"
+    "react-error-overlay": "^6.0.9",
+    "web-vitals": "^3.0.3"
   }
 }
