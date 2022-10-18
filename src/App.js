@@ -11,6 +11,7 @@ import Rank from "./components/Rank/Rank";
 import "./App.css";
 
 const intialState = {
+  input: "",
   imgUrl: "",
   box: {},
   route: "signin",
