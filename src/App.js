@@ -11,7 +11,6 @@ import Rank from "./components/Rank/Rank";
 import "./App.css";
 
 const intialState = {
-  input: "",
   imgUrl: "",
   box: {},
   route: "signin",
@@ -24,12 +23,12 @@ const intialState = {
     joined: "",
   },
 };
+
 class App extends Component {
   constructor() {
     super();
     this.state = intialState;
   }
-
   loadUser = (data) => {
     this.setState({
       user: {
